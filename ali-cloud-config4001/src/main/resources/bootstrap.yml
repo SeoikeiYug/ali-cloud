@@ -1,0 +1,16 @@
+# nacos配置
+server:
+  port: 4001
+
+spring:
+  application:
+    name: ali-cloud-config
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 150.158.49.91:8848 # Nacos服务注册中心地址
+      config:
+        server-addr: 150.158.49.91:8848 # Nacos作为配置中心地址
+        file-extension: yaml # 指定yaml格式的配置
+        group: SZ_GROUP
+        namespace: 3a35d7e8-7423-423f-a1e2-4f39fbb0ec89

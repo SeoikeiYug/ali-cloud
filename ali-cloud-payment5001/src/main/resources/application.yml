@@ -1,0 +1,16 @@
+server:
+  port: 5001
+
+spring:
+  application:
+    name: ali-cloud-payment
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 150.158.49.91:8848 # 配置Nacos地址
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

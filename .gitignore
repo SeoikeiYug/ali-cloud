@@ -1,0 +1,8 @@
+# Project exclude paths
+/ali-cloud-commons/target/
+/ali-cloud-config4001/target/
+/ali-cloud-order6001/target/
+/ali-cloud-payment5001/target/
+/ali-cloud-payment5002/target/
+
+.idea

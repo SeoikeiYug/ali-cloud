@@ -1,0 +1,14 @@
+server:
+  port: 6001
+
+spring:
+  application:
+    name: ali-cloud-order
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 150.158.49.91:8848
+
+#消费者将要去访问的微服务名称(注册成功进nacos的微服务提供者)
+service-url:
+  payment: http://ali-cloud-payment
