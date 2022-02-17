@@ -7,7 +7,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 150.158.49.91:8848 # 配置Nacos地址
+        server-addr: nacos.liulianhaochi.xyz:80 # 配置Nacos地址
 
 management:
   endpoints:
