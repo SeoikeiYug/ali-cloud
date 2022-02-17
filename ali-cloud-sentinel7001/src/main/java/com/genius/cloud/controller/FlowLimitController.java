@@ -19,4 +19,10 @@ public class FlowLimitController {
         return "------testB";
     }
 
+    @GetMapping("/testC")
+    public String testC() {
+        log.info(Thread.currentThread().getName() + "\t" + "...testC");
+        return "------testC";
+    }
+
 }
