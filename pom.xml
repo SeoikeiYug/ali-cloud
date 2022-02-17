@@ -9,11 +9,11 @@
   <version>1.0.0-SNAPSHOT</version>
   <modules>
     <module>ali-cloud-payment5001</module>
-      <module>ali-cloud-payment5002</module>
+    <module>ali-cloud-payment5002</module>
     <module>ali-cloud-order6001</module>
     <module>ali-cloud-commons</module>
-      <module>ali-cloud-config4001</module>
-      <module>ali-cloud-sentinel7001</module>
+    <module>ali-cloud-config4001</module>
+    <module>ali-cloud-sentinel7001</module>
   </modules>
   <packaging>pom</packaging>
 
