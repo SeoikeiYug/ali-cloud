@@ -13,6 +13,7 @@
     <module>ali-cloud-order6001</module>
     <module>ali-cloud-commons</module>
       <module>ali-cloud-config4001</module>
+      <module>ali-cloud-sentinel7001</module>
   </modules>
   <packaging>pom</packaging>
 
