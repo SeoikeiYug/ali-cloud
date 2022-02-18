@@ -6,10 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class SentinelMain7001 {
+public class Payment5001Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(SentinelMain7001.class, args);
+        SpringApplication.run(Payment5001Application.class, args);
     }
 
 }
