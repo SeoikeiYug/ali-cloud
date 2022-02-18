@@ -41,7 +41,7 @@ public class OrderController {
     @RequestMapping("/fallback/{id}")
     @SentinelResource(value = "fallback", fallback = "handlerFallback", blockHandler = "blockHandler", exceptionsToIgnore = {IllegalArgumentException.class})
     public CommonResult<Payment> fallback(@PathVariable Long id) {
-        CommonResult<Payment> result = restTemplate.getForObject(paymentUrl + "/comsumer/sql/" + id, CommonResult.class, id);
+        CommonResult<Payment> result = restTemplate.getForObject(paymentUrl + "/payment/sql/" + id, CommonResult.class, id);
 
         if (id == 4) {
             throw new IllegalArgumentException("IllegalArgumentException,非法参数异常....");

@@ -22,8 +22,8 @@ public class PaymentController {
 
     static {
         data.put(1L, new Payment(1L, "0001"));
-        data.put(2L, new Payment(2L, "0001"));
-        data.put(3L, new Payment(3L, "0001"));
+        data.put(2L, new Payment(2L, "0002"));
+        data.put(3L, new Payment(3L, "0003"));
     }
 
     @GetMapping(value = "/nacos/{id}")
