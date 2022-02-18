@@ -12,6 +12,12 @@
     <artifactId>ali-cloud-payment5001</artifactId>
 
     <dependencies>
+        <!-- 引入自己定义的api通用包，可以使用Payment支付Entity -->
+        <dependency>
+            <groupId>com.genius</groupId>
+            <artifactId>ali-cloud-commons</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
         <!--SpringCloud alibaba nacos -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
