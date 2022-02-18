@@ -53,17 +53,19 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <!-- 此处为程序主入口，不带后缀 -->
-                            <mainClass>com.genius.cloud.Config4001Application</mainClass>
-                        </manifest>
-                    </archive>
+                    <!-- 你的主类全路径 -->
+                    <mainClass>com.genius.cloud.Config4001Application</mainClass>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
