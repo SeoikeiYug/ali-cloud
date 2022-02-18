@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(value = "ali-cloud-payment", fallback = PaymentServiceFallback.class)
 public interface PaymentService {
 
-    @GetMapping(value = "/comsumer/sql/{id}")
+    @GetMapping(value = "/payment/sql/{id}")
     CommonResult<Payment> paymentSql(@PathVariable("id") Long id);
 
 }

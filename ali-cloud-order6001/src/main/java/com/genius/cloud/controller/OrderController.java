@@ -28,12 +28,12 @@ public class OrderController {
     @Value("${service-url.payment}")
     private String paymentUrl;
 
-    @GetMapping(value = "/payment/nacos/{id}")
+    @GetMapping(value = "/nacos/{id}")
     public String paymentInfo(@PathVariable("id") Long id) {
         return restTemplate.getForObject(paymentUrl + "/payment/nacos/" + id, String.class);
     }
 
-    @GetMapping(value = "/payment/sql/{id}")
+    @GetMapping(value = "/sql/{id}")
     public CommonResult<Payment> paymentSQL(@PathVariable("id") Long id) {
         return paymentService.paymentSql(id);
     }
