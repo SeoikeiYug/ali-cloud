@@ -1,0 +1,50 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: ali-cloud-seata-storage
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.liulianhaochi.xyz:80
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://150.158.49.91:3306/seata_storage
+    username: remote
+    password: Mysql123@
+
+seata:
+  enabled: true
+  enable-auto-data-source-proxy: true
+  tx-service-group: default_tx_group
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: nacos.liulianhaochi.xyz:80
+  config:
+    type: nacos
+    nacos:
+      server-addr: nacos.liulianhaochi.xyz:80
+      group: SEATA_GROUP
+  service:
+    vgroup-mapping:
+      default_tx_group: default
+    disable-global-transaction: false
+  client:
+    rm:
+      report-success-enable: false
+
+feign:
+  hystrix:
+    enabled: false
+
+logging:
+  level:
+    io:
+      seata: info
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml

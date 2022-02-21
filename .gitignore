@@ -5,5 +5,8 @@
 /ali-cloud-payment5001/target/
 /ali-cloud-payment5002/target/
 /ali-cloud-sentinel7001/target/
+/ali-cloud-seata-order8001/target/
+/ali-cloud-seata-storage9001/target/
+/ali-cloud-seata-account10001/target/
 
 .idea
