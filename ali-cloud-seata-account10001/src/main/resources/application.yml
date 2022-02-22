@@ -8,6 +8,7 @@ spring:
     nacos:
       discovery:
         server-addr: nacos.liulianhaochi.xyz:80
+        group: SEATA_GROUP
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
