@@ -2,6 +2,9 @@ server:
   port: 9001
 
 spring:
+  profiles:
+    #env
+    active: @env@
   application:
     name: ali-cloud-seata-storage
   cloud:
@@ -9,12 +12,6 @@ spring:
       discovery:
         server-addr: nacos.liulianhaochi.xyz:80
         group: SEATA_GROUP
-
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://150.158.49.91:3306/seata_storage
-    username: remote
-    password: Mysql123@
 
 seata:
   enabled: true
@@ -46,6 +43,7 @@ logging:
   level:
     io:
       seata: info
+  config: classpath:logback-@env@.xml
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml

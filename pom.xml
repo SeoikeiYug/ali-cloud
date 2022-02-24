@@ -110,7 +110,45 @@
     </dependencies>
   </dependencyManagement>
 
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <env>dev</env><!--相当于定义一个变量 供下面使用-->
+        <myName>dev</myName><!--使用一个properties文件中未定义，但是其他地方会取值的变量-->
+      </properties>
+      <activation><!--默认激活-->
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    <profile>
+      <id>pro</id>
+      <properties>
+        <env>pro</env>
+      </properties>
+      <activation><!--默认激活-->
+        <activeByDefault>false</activeByDefault>
+      </activation>
+    </profile>
+  </profiles>
+
   <build>
+    <resources>
+      <resource>
+        <!-- 指定配置文件所在的resource目录 -->
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>application.yml</include>
+          <include>application-dev.yml</include>
+          <include>application-pro.yml</include>
+          <include>logback-dev.xml</include>
+          <include>logback-product.xml</include>
+          <include>mapper/**</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
