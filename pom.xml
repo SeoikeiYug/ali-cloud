@@ -142,7 +142,7 @@
           <include>application-dev.yml</include>
           <include>application-pro.yml</include>
           <include>logback-dev.xml</include>
-          <include>logback-product.xml</include>
+          <include>logback-pro.xml</include>
           <include>mapper/**</include>
         </includes>
         <filtering>true</filtering>
