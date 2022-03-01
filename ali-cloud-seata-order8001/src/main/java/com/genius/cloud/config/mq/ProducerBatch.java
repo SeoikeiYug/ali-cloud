@@ -1,11 +1,11 @@
 package com.genius.cloud.config.mq;
 
+import com.genius.cloud.config.mq.util.ListSplitter;
 import lombok.extern.log4j.Log4j2;
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
-import org.apache.rocketmq.client.producer.SendStatus;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.exception.RemotingException;
 
@@ -39,14 +39,19 @@ public class ProducerBatch {
             Message msg = new Message("Topic_batch_genius", "Tag_batch_genius", ("Hello genius，这是批量消息" + i).getBytes());
             msgs.add(msg);
         }
+        // 发送批量消息：把大的消息分裂成若干个小的消息
+        ListSplitter splitter = new ListSplitter(msgs, producer);
 
-        // 7.发送消息
-        SendResult result = producer.send(msgs);
-        // 8.发送状态
-        SendStatus status = result.getSendStatus();
-
-        System.out.println("发送结果:" + status);
-
+        while (splitter.hasNext()) {
+            try {
+                List<Message> listItem = splitter.next();
+                SendResult result = producer.send(listItem);
+                System.out.println("发送结果:" + result);
+            } catch (Exception e) {
+                e.printStackTrace();
+                // 处理error
+            }
+        }
         // 9.线程睡1秒
         TimeUnit.SECONDS.sleep(1);
 
