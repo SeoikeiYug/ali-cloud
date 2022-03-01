@@ -16,7 +16,7 @@ public class Consumer {
         // 1.创建消费者Consumer，制定消费者组名
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("genius_producer_group");
         // 2.指定Nameserver地址
-        consumer.setNamesrvAddr("13.213.56.82:9876");
+        consumer.setNamesrvAddr("13.213.65.160:9876");
         // 消息拉取最大条数
         consumer.setConsumeMessageBatchMaxSize(2);
         // 3.订阅主题Topic和Tag
