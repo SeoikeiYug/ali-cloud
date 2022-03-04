@@ -12,7 +12,6 @@
     <module>ali-cloud-payment5002</module>
     <module>ali-cloud-order6001</module>
     <module>ali-cloud-commons</module>
-    <module>ali-cloud-config4001</module>
     <module>ali-cloud-sentinel7001</module>
     <module>ali-cloud-seata-order8001</module>
     <module>ali-cloud-seata-storage9001</module>
@@ -149,6 +148,7 @@
           <include>application-pro.yml</include>
           <include>logback-dev.xml</include>
           <include>logback-pro.xml</include>
+          <include>bootstrap.yml</include>
           <include>mapper/**</include>
         </includes>
         <filtering>true</filtering>

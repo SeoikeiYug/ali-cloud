@@ -1,18 +1,3 @@
-server:
-  port: 8001
-
-spring:
-  profiles:
-    #env
-    active: @env@
-  application:
-    name: ali-cloud-seata-order
-  cloud:
-    nacos:
-      discovery:
-        server-addr: nacos.liulianhaochi.xyz:80
-        group: SEATA_GROUP
-
 seata:
   enabled: true
   enable-auto-data-source-proxy: true
