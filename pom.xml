@@ -8,11 +8,7 @@
   <artifactId>ali-cloud</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <modules>
-    <module>ali-cloud-payment5001</module>
-    <module>ali-cloud-payment5002</module>
-    <module>ali-cloud-order6001</module>
     <module>ali-cloud-commons</module>
-    <module>ali-cloud-sentinel7001</module>
     <module>ali-cloud-seata-order8001</module>
     <module>ali-cloud-seata-storage9001</module>
     <module>ali-cloud-seata-account10001</module>
