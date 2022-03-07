@@ -20,6 +20,12 @@ seata:
     rm:
       report-success-enable: false
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 feign:
   hystrix:
     enabled: false
