@@ -17,15 +17,3 @@ spring:
         file-extension: yaml # 指定yaml格式的配置
         group: SZ_GROUP
         namespace: 0abaaab7-18a0-4d2d-a1f1-fafee3ca14bb
-    sentinel:
-      transport:
-        dashboard: sentinel.liulianhaochi.xyz #配置Sentinel dashboard地址
-        port: 8719
-      datasource:
-        ds1:
-          nacos:
-            server-addr: nacos.liulianhaochi.xyz:80
-            dataId: ali-cloud-seata-sentinel-pro
-            groupId: SZ_GROUP
-            data-type: json
-            rule-type: flow
