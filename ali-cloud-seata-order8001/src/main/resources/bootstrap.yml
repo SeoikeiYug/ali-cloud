@@ -26,7 +26,6 @@ spring:
           nacos:
             server-addr: nacos.liulianhaochi.xyz:80
             dataId: ali-cloud-seata-sentinel-pro
-            namespace: 0abaaab7-18a0-4d2d-a1f1-fafee3ca14bb
             groupId: SZ_GROUP
             data-type: json
             rule-type: flow
