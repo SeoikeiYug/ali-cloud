@@ -1,31 +1,3 @@
-server:
-  port: 8001
-
-spring:
-  profiles:
-    #env
-    active: @env@
-  application:
-    name: ali-cloud-seata-order
-  cloud:
-    nacos:
-      discovery:
-        server-addr: nacos.liulianhaochi.xyz:80
-        group: SEATA_GROUP
-    sentinel:
-      transport:
-        dashboard: sentinel.liulianhaochi.xyz:80 #配置Sentinel dashboard地址
-        port: 8719
-      datasource:
-        ds1:
-          nacos:
-            server-addr: nacos.liulianhaochi.xyz:80
-            dataId: ali-cloud-seata-sentinel-pro
-            namespace: 0abaaab7-18a0-4d2d-a1f1-fafee3ca14bb
-            groupId: SZ_GROUP
-            data-type: json
-            rule-type: flow
-
 seata:
   enabled: true
   enable-auto-data-source-proxy: true

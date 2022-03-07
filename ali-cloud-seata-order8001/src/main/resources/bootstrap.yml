@@ -1,6 +1,29 @@
+server:
+  port: 8001
+
 spring:
+  profiles:
+    #env
+    active: @env@
+  application:
+    name: ali-cloud-seata-order
   cloud:
+    sentinel:
+      transport:
+        dashboard: sentinel.liulianhaochi.xyz:80 #配置Sentinel dashboard地址
+        port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: nacos.liulianhaochi.xyz:80
+            dataId: ali-cloud-seata-sentinel
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
     nacos:
+      discovery:
+        server-addr: nacos.liulianhaochi.xyz:80
+        group: SEATA_GROUP
       config:
         server-addr: nacos.liulianhaochi.xyz:80 # Nacos作为配置中心地址
         file-extension: yaml # 指定yaml格式的配置
