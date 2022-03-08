@@ -15,7 +15,7 @@ public class ConsumerBroadcasting {
         // 1.创建消费者Consumer，制定消费者组名
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("genius_producer_broadcasting_group");
         // 2.指定Nameserver地址
-        consumer.setNamesrvAddr("13.213.65.160:9876");
+        consumer.setNamesrvAddr("106.12.134.254:9876");
         // 默认均衡轮询消费模式 改为广播模式
         consumer.setMessageModel(MessageModel.BROADCASTING);
 

@@ -20,7 +20,7 @@ public class ProducerBatch {
         // 1.创建消息生产者producer，并制定生产者组名
         DefaultMQProducer producer = new DefaultMQProducer("genius_producer_batch_group");
         // 2.指定Nameserver地址
-        producer.setNamesrvAddr("13.213.65.160:9876");
+        producer.setNamesrvAddr("106.12.134.254:9876");
         // 3.设置过期时间
         producer.setSendMsgTimeout(10000);
         // 4.设置不走vip通道

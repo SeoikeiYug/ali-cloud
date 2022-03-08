@@ -18,7 +18,7 @@ public class ConsumerBatch {
         // 1.创建消费者Consumer，制定消费者组名
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("demo_consumer_order_group");
         // 2.指定Nameserver地址
-        consumer.setNamesrvAddr("13.213.65.160:9876");
+        consumer.setNamesrvAddr("106.12.134.254:9876");
         // 3.消息拉取最大条数
         consumer.setConsumeMessageBatchMaxSize(2);
         // 4.订阅主题Topic和Tag
