@@ -2,6 +2,7 @@ package com.genius.cloud.config.mq;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
+import org.apache.rocketmq.client.producer.SendStatus;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
@@ -30,7 +31,9 @@ public class ProducerSync {
                     ("Hello genius，" + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
             // 5.发送同步消息
             SendResult sendResult = producer.send(msg);
+            SendStatus sendStatus = sendResult.getSendStatus();
             System.out.println("发送结果：" + sendResult);
+            System.out.println("发送状态：" + sendStatus);
         }
 
         // 6.关闭生产者producer
