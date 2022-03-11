@@ -1,4 +1,4 @@
-package com.genius.cloud.config.mq;
+package com.genius.cloud.config.mq.demo;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;

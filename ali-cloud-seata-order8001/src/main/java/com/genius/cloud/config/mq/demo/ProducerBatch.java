@@ -1,4 +1,4 @@
-package com.genius.cloud.config.mq;
+package com.genius.cloud.config.mq.demo;
 
 import com.genius.cloud.config.mq.util.ListSplitter;
 import lombok.extern.log4j.Log4j2;

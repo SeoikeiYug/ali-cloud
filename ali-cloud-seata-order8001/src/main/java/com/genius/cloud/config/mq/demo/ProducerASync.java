@@ -1,12 +1,12 @@
-package com.genius.cloud.config.mq;
+package com.genius.cloud.config.mq.demo;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
-import org.apache.rocketmq.client.producer.SendStatus;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
-public class ProducerSync {
+public class ProducerASync {
 
     public static void main(String[] args) throws Exception {
         // 1.创建消息生产者producer，并制定生产者组名
@@ -20,6 +20,7 @@ public class ProducerSync {
         // 5.启动producer
         System.out.println("生产者启动");
         producer.start();
+
         for (int i = 0; i < 3; i++) {
             // 4.创建消息对象，指定主题Topic、Tag和消息体
             /*
@@ -27,15 +28,23 @@ public class ProducerSync {
              * 参数二：消息Tag
              * 参数三：消息内容
              */
-            Message msg = new Message("Topic_genius_sync", "Tag_genius_sync",
+            Message msg = new Message("Topic_genius_async", "Tag_genius_async",
                     ("Hello genius，" + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
-            // 5.发送同步消息
-            SendResult sendResult = producer.send(msg);
-            SendStatus sendStatus = sendResult.getSendStatus();
-            System.out.println("发送结果：" + sendResult);
-            System.out.println("发送状态：" + sendStatus);
-        }
+            // 发送消息到一个Broker，异步发送没有返回值，需要使用 SendCallback 接收异步返回结果的回调
+            producer.send(msg, new SendCallback() {
+                @Override
+                public void onSuccess(SendResult sendResult) {
+                    System.out.println("发送成功：" + sendResult);
+                }
 
+                @Override
+                public void onException(Throwable throwable) {
+                    System.out.println("发送异常：" + throwable.getMessage());
+                }
+            });
+
+        }
+        Thread.sleep(2000);
         // 6.关闭生产者producer
         producer.shutdown();
         System.out.println("生产者关闭");
