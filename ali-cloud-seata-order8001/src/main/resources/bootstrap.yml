@@ -29,4 +29,4 @@ spring:
         server-addr: nacos.liulianhaochi.xyz:80 # Nacos作为配置中心地址
         file-extension: yaml # 指定yaml格式的配置
         group: SZ_GROUP
-        namespace: 0abaaab7-18a0-4d2d-a1f1-fafee3ca14bb
+        namespace: @namespace@

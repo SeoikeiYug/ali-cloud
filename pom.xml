@@ -116,7 +116,7 @@
       <id>dev</id>
       <properties>
         <env>dev</env><!--相当于定义一个变量 供下面使用-->
-        <myName>dev</myName><!--使用一个properties文件中未定义，但是其他地方会取值的变量-->
+        <namespace>3a35d7e8-7423-423f-a1e2-4f39fbb0ec89</namespace><!--使用一个properties文件中未定义，但是其他地方会取值的变量-->
       </properties>
       <activation><!--默认激活-->
         <activeByDefault>true</activeByDefault>
@@ -126,6 +126,7 @@
       <id>pro</id>
       <properties>
         <env>pro</env>
+        <namespace>0abaaab7-18a0-4d2d-a1f1-fafee3ca14bb</namespace><!--使用一个properties文件中未定义，但是其他地方会取值的变量-->
       </properties>
       <activation><!--默认激活-->
         <activeByDefault>false</activeByDefault>

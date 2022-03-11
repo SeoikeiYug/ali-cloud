@@ -2,10 +2,14 @@ package com.genius.cloud.controller;
 
 import com.genius.cloud.bean.Order;
 import com.genius.cloud.common.CommonResult;
+import com.genius.cloud.mq.config.JmsConfig;
+import com.genius.cloud.mq.producer.ProducerOrder;
 import com.genius.cloud.service.OrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.client.producer.SendResult;
+import org.apache.rocketmq.common.message.Message;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.nio.charset.StandardCharsets;
 
 @Slf4j
 @Api("订单")
@@ -23,6 +28,9 @@ public class OrderController {
 
     @Value("${config.info}")
     private String configInfo;
+
+    @Resource
+    private ProducerOrder producerOrder;
 
     @Resource
     private OrderService orderService;
@@ -38,6 +46,10 @@ public class OrderController {
     public CommonResult<Object> create(Order order) {
         log.info("订单创建，配置信息： {}", configInfo);
         orderService.create(order);
+        SendResult send = producerOrder.send(new Message(JmsConfig.TOPIC_ORDER, "order_create", "创建成功".getBytes(StandardCharsets.UTF_8)));
+        if (send == null) {
+            log.error("MQ消息发送失败");
+        }
         return new CommonResult<>(200, "订单创建成功");
     }
 
