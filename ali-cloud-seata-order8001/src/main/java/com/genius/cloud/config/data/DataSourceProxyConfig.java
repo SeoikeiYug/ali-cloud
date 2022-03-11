@@ -1,4 +1,4 @@
-package com.genius.cloud.config;
+package com.genius.cloud.config.data;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import io.seata.rm.datasource.DataSourceProxy;

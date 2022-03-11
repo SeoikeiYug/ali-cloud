@@ -1,6 +1,6 @@
-package com.genius.cloud.config.mq.demo;
+package com.genius.cloud.mq.demo;
 
-import com.genius.cloud.config.mq.util.ListSplitter;
+import com.genius.cloud.mq.util.ListSplitter;
 import lombok.extern.log4j.Log4j2;
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;

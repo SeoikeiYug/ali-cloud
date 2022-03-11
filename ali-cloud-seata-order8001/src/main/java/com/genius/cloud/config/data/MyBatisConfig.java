@@ -1,4 +1,4 @@
-package com.genius.cloud.config;
+package com.genius.cloud.config.data;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;

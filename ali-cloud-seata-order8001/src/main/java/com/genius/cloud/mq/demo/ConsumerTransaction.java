@@ -1,4 +1,4 @@
-package com.genius.cloud.config.mq.demo;
+package com.genius.cloud.mq.demo;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;

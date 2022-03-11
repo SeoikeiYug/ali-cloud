@@ -1,4 +1,4 @@
-package com.genius.cloud.config.mq.demo;
+package com.genius.cloud.mq.demo;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
@@ -10,7 +10,7 @@ import org.apache.rocketmq.remoting.common.RemotingHelper;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-public class ConsumerSync {
+public class ConsumerASync {
 
     public static void main(String[] args) throws Exception {
         // 1.创建消费者Consumer，制定消费者组名
@@ -20,11 +20,9 @@ public class ConsumerSync {
         // 消息拉取最大条数
         consumer.setConsumeMessageBatchMaxSize(2);
         // 3.订阅主题Topic和Tag
-        consumer.subscribe("Topic_genius_sync", "*");
-
+        consumer.subscribe("Topic_genius_async", "*");
         // 4.设置回调函数，处理消息
         consumer.registerMessageListener(new MessageListenerConcurrently() {
-
             // 接受消息内容
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
@@ -49,5 +47,5 @@ public class ConsumerSync {
         // 5.启动消费者consumer
         consumer.start();
     }
-
 }
+

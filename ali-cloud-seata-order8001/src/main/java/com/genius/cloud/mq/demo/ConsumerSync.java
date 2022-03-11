@@ -1,42 +1,53 @@
-package com.genius.cloud.config.mq.demo;
+package com.genius.cloud.mq.demo;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.common.message.MessageExt;
-import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
+import org.apache.rocketmq.remoting.common.RemotingHelper;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-public class ConsumerBroadcasting {
+public class ConsumerSync {
 
     public static void main(String[] args) throws Exception {
         // 1.创建消费者Consumer，制定消费者组名
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("genius_producer_broadcasting_group");
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("genius_consumer_group");
         // 2.指定Nameserver地址
         consumer.setNamesrvAddr("106.12.134.254:9876");
-        // 默认均衡轮询消费模式 改为广播模式
-        consumer.setMessageModel(MessageModel.BROADCASTING);
-
+        // 消息拉取最大条数
+        consumer.setConsumeMessageBatchMaxSize(2);
         // 3.订阅主题Topic和Tag
-        consumer.subscribe("Topic_broadcasting_genius", "*");
+        consumer.subscribe("Topic_genius_sync", "*");
 
         // 4.设置回调函数，处理消息
         consumer.registerMessageListener(new MessageListenerConcurrently() {
+
             // 接受消息内容
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
                 for (MessageExt msg : msgs) {
-                    System.out.println("A----consumeThread=" + Thread.currentThread().getName() + "," + new String(msg.getBody()));
+
+                    try {
+                        // 获取主题
+                        String topic = msg.getTopic();
+                        // 获取标签
+                        String tags = msg.getTags();
+                        // 获取信息
+                        byte[] body = msg.getBody();
+                        String result = new String(body, RemotingHelper.DEFAULT_CHARSET);
+                        System.out.println("Consumer消费信息：topic:" + topic + ",tags:" + tags + ",result：" + result);
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
                 }
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
         });
         // 5.启动消费者consumer
         consumer.start();
-
-        System.out.println("消费者启动");
     }
-}
 
+}

@@ -1,4 +1,4 @@
-package com.genius.cloud.config.mq.demo;
+package com.genius.cloud.mq.demo;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendCallback;

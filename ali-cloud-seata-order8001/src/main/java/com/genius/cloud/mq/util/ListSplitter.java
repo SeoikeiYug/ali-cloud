@@ -1,4 +1,4 @@
-package com.genius.cloud.config.mq.util;
+package com.genius.cloud.mq.util;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.Message;

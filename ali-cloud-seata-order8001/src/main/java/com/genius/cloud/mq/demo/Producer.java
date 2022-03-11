@@ -1,19 +1,14 @@
-package com.genius.cloud.config.mq.demo;
+package com.genius.cloud.mq.demo;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
-import org.apache.rocketmq.client.producer.MessageQueueSelector;
-import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
-import org.apache.rocketmq.common.message.MessageQueue;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
-import java.util.List;
-
-public class Producer_Orderly {
+public class Producer {
 
     public static void main(String[] args) throws Exception {
         // 1.创建消息生产者producer，并制定生产者组名
-        DefaultMQProducer producer = new DefaultMQProducer("genius_producer_orderly_group");
+        DefaultMQProducer producer = new DefaultMQProducer("genius_producer_group");
         // 2.指定Nameserver地址
         producer.setNamesrvAddr("106.12.134.254:9876");
         // 3.启动producer
@@ -26,17 +21,11 @@ public class Producer_Orderly {
              * 参数二：消息Tag
              * 参数三：消息内容
              */
-            Message msg = new Message("Topic_order_genius", "Tag_order_genius",
+            Message msg = new Message("Topic_genius", "Tag_genius",
                     ("Hello genius，" + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
-            // 5.发送有序消息
-            SendResult send = producer.send(msg, new MessageQueueSelector() {
-                @Override
-                public MessageQueue select(List<MessageQueue> mqs, Message msg, Object arg) {
-                    Integer index = (Integer) arg;
-                    return mqs.get(index);
-                }
-            }, 1);
-            System.out.println("发送结果：" + send);
+            // 5.发送单向消息
+            producer.sendOneway(msg);
+            System.out.println("发送结果：" + msg);
             // 线程睡1秒
         }
 
