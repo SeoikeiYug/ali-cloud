@@ -44,7 +44,6 @@ public class OrderController {
     @ApiOperation(value = "订单创建", notes = "订单创建接口")
     @GetMapping("/create")
     public CommonResult<Object> create(Order order) {
-        log.info("订单创建，配置信息： {}", configInfo);
         orderService.create(order);
         SendResult send = producerOrder.send(new Message(JmsConfig.TOPIC_ORDER, "order_create", "创建成功".getBytes(StandardCharsets.UTF_8)));
         if (send == null) {
