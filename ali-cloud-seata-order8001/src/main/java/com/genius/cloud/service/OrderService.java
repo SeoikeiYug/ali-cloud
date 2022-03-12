@@ -6,4 +6,6 @@ public interface OrderService {
 
     void create(Order order);
 
+    Order getById(Integer id);
+
 }

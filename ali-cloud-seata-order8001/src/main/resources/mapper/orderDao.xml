@@ -25,4 +25,8 @@
           and status = #{status};
     </update>
 
+    <select id="getById" parameterType="Integer" resultMap="BaseResultMap">
+        select * from t_order where id = #{id}
+    </select>
+
 </mapper>

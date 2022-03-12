@@ -6,6 +6,8 @@ import com.genius.cloud.mq.config.JmsConfig;
 import com.genius.cloud.mq.producer.ProducerOrder;
 import com.genius.cloud.service.OrderService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendResult;
@@ -50,6 +52,16 @@ public class OrderController {
             log.error("MQ消息发送失败");
         }
         return new CommonResult<>(200, "订单创建成功");
+    }
+
+    @ApiOperation(value = "订单查询", notes = "订单查询接口")
+    @ApiImplicitParams(
+        @ApiImplicitParam(name = "id", value = "订单Id", dataType = "Integer")
+    )
+    @GetMapping("/get")
+    public CommonResult<Object> get(Integer id) {
+        Order order = orderService.getById(id);
+        return new CommonResult<>(200, "订单获取成功", order);
     }
 
 }

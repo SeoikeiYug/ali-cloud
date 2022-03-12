@@ -8,6 +8,7 @@ import com.genius.cloud.service.StorageService;
 import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -23,6 +24,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Resource
     private AccountService accountService;
+
+    @Override
+    @Transactional(readOnly = true)
+    public Order getById(Integer id) {
+        return orderDao.getById(id);
+    }
 
     /**
      * 创建订单->调用库存服务扣减库存->调用账户服务扣减账户余额->修改订单状态
