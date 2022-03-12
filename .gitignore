@@ -10,3 +10,5 @@
 /ali-cloud-seata-account10001/target/
 
 .idea
+
+*.iml
